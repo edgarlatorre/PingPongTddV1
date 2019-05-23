@@ -18,3 +18,13 @@ class TestGetMovies:
         response = client.get('/movies/1')
 
         assert response.status_code == status.HTTP_404_NOT_FOUND
+
+
+@pytest.mark.django_db
+class TestListMovies:
+
+    def test_returns_empty_list_when_no_movies_exist(self, client):
+        response = client.get('/movies')
+
+        assert response.status_code == status.HTTP_200_OK
+        assert response.json() == []
