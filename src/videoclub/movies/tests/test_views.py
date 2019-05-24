@@ -44,7 +44,7 @@ class TestListMovies:
         ]
 
 
-@pytest.mark.usefixtures
+@pytest.mark.django_db
 class TestCreateMovie:
 
     def test_creates_movie_when_data_is_valid(self, client):
