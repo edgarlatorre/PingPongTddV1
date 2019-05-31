@@ -6,7 +6,7 @@ from videoclub.movies.models import Movie
 
 
 class Command(BaseCommand):
-    help = 'Generate random scores for movies if score is not 0.'
+    help = 'Generate random scores for movies if score is zero.'
 
     def handle(self, *args, **options):
         movies = Movie.objects.all()
