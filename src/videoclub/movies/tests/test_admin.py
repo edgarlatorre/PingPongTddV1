@@ -15,8 +15,14 @@ class TestMovieAdmin:
     def movie_admin(self, admin_site):
         return MovieAdmin(Movie, admin_site)
 
-    def test_fields_are_set(self, movie_admin):
-        assert movie_admin.fields == ('title', 'price', 'score',)
+    def test_fields_is_set(self, movie_admin):
+        assert movie_admin.fields == ('title', 'price', 'score', 'genre', )
 
-    def test_list_filter_are_set(self, movie_admin):
+    def test_list_display_is_set(self, movie_admin):
+        assert movie_admin.list_display == ('title', 'score', 'genre', )
+
+    def test_readonly_fields_is_set(self, movie_admin):
+        assert movie_admin.readonly_fields == ('score',)
+
+    def test_list_filter_is_set(self, movie_admin):
         assert movie_admin.list_filter == ('genre',)
