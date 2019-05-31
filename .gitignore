@@ -76,3 +76,5 @@ docs/*.html
 staticfiles/
 
 db.sqlite3
+
+.api-key
