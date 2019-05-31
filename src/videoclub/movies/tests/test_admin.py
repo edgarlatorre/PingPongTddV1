@@ -17,3 +17,6 @@ class TestMovieAdmin:
 
     def test_fields_are_set(self, movie_admin):
         assert movie_admin.fields == ('title', 'price', 'score',)
+
+    def test_list_filter_are_set(self, movie_admin):
+        assert movie_admin.list_filter == ('genre',)

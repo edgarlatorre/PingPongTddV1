@@ -9,4 +9,5 @@ from videoclub.movies.models import Movie
 @register(Movie)
 class MovieAdmin(admin.ModelAdmin):
     fields = ('title', 'price', 'score',)
+    list_filter = ('genre',)
 
