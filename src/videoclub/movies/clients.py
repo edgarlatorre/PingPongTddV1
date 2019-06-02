@@ -32,10 +32,14 @@ class OMDBClient:
             raise BadRequest(message=error_message)
 
 
-class Unavailable(Exception):
+class OMDBClientException(Exception):
+    pass
+
+
+class Unavailable(OMDBClientException):
     pass
 
 
 @dataclass
-class BadRequest(Exception):
+class BadRequest(OMDBClientException):
     message: str
