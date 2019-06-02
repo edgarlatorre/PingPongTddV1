@@ -1,6 +1,8 @@
 from decimal import Decimal
 
-from ..clients import OMDBClient
+import pytest
+
+from ..clients import OMDBClient, Unavailable
 
 
 class TestOMDBClient:
@@ -14,3 +16,7 @@ class TestOMDBClient:
         rating = OMDBClient().get_rating_for_movie(title='Die Hard')
 
         assert rating == Decimal('8.2')
+
+    def test_raises_unavailable_when_connection_error(self):
+        with pytest.raises(Unavailable):
+            OMDBClient().get_rating_for_movie(title='Die Hard')

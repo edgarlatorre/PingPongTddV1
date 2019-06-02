@@ -11,8 +11,16 @@ class OMDBClient:
     API_KEY = settings.API_KEY
 
     def get_rating_for_movie(self, title):
-        response = requests.get(self.HOST_URL, params={'t': title, 'apikey': self.API_KEY})
+        try:
+            response = requests.get(self.HOST_URL, params={'t': title, 'apikey': self.API_KEY})
+        except requests.ConnectionError as e:
+            raise Unavailable() from e
+
         serializer = OMDBResponseSerializer(response.json())
 
         movie_rating = serializer.data.get('rating')
         return Decimal(movie_rating)
+
+
+class Unavailable(Exception):
+    pass
