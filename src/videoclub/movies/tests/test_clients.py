@@ -8,7 +8,7 @@ from ..clients import OMDBClient, Unavailable
 
 class TestOMDBClient:
 
-    def test_returns_movie_rating_when_passing_valid_title(self, responses):
+    def test_returns_movie_rating_as_decimal_when_passing_valid_title(self, responses):
         OMDBClient.API_KEY = 'my-api-key'
         request_url = 'http://www.omdbapi.com/?apikey=my-api-key&t=Die+Hard'
         responses.add(responses.GET, request_url, match_querystring=True, status=200,
