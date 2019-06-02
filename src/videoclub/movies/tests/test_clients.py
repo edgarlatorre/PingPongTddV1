@@ -1,3 +1,5 @@
+from decimal import Decimal
+
 from ..clients import OMDBClient
 
 
@@ -11,4 +13,4 @@ class TestOMDBClient:
 
         rating = OMDBClient().get_rating_for_movie(title='Die Hard')
 
-        assert rating == '8.2'
+        assert rating == Decimal('8.2')
