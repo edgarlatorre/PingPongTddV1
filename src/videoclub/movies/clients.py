@@ -10,10 +10,12 @@ from .serializers import OMDBResponseSerializer
 class OMDBClient:
     HOST_URL = 'http://www.omdbapi.com'
     API_KEY = settings.API_KEY
+    DEFAULT_TIMEOUT = 5
 
     def get_rating_for_movie(self, title):
         try:
-            response = requests.get(self.HOST_URL, params={'t': title, 'apikey': self.API_KEY})
+            response = requests.get(self.HOST_URL, params={'t': title, 'apikey': self.API_KEY},
+                                    timeout=self.DEFAULT_TIMEOUT)
         except (requests.ConnectionError, requests.Timeout) as e:
             raise Unavailable() from e
 
