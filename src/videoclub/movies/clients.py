@@ -20,7 +20,6 @@ class OMDBClient:
         self._raise_if_error_in_response(response)
 
         serializer = OMDBResponseSerializer(response.json())
-
         movie_rating = serializer.data.get('rating')
         return Decimal(movie_rating)
 
